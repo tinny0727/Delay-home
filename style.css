@@ -1,0 +1,169 @@
+/* --- 基礎重置與原本樣式 --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+body {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* --- 閃爍方塊核心動畫 --- */
+@keyframes blink {
+    0%, 100% { opacity: 0; transform: scaleX(0.8); }
+    50% { opacity: 1; transform: scaleX(1); }
+}
+
+#glitch-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.glitch-box {
+    position: absolute;
+    background-color: var(--bg-color, rgba(255, 255, 255, 0.8));
+    z-index: 1;
+    pointer-events: none;
+    animation: blink var(--duration) infinite ease-in-out;
+}
+
+/* --- App 核心容器（支援手機與平板優化） --- */
+.app {
+  width: 95vw;          
+  max-width: 500px;     /* 回歸手機比例的外觀，如果想在平板上大一點可以調成 700px */
+  height: 90vh;         
+  max-height: 1000px;   
+  background: #000;
+  border-radius: 40px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  z-index: 10;
+}
+
+.header h1 { color: #fff; font-weight: 500; letter-spacing: 2px; }
+
+.eyes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 60px 0 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.eye {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.eye::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, 0px)));
+  transition: 0.05s linear;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 10px;
+  position: relative;
+  z-index: 10;
+}
+
+.menu button {
+  padding: 18px;
+  border-radius: 40px;
+  border: 2px solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  font-size: 18px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.menu button:hover {
+  background: rgba(0,255,100,0.2);
+  border-color: #00ff88;
+}
+
+/* 裝飾元件 */
+.decor span { position: absolute; display: block; z-index: 5; }
+.square { width: 12px; height: 12px; }
+.rect { width: 40px; height: 14px; border-radius: 4px; }
+.green { background: #4cff6a; }
+.white { background: #ccc; }
+
+.square { top: 120px; left: 20px; }
+.square.right { right: 30px; top: 200px; }
+.rect.white { top: 150px; left: 40px; }
+.rect.green.vertical { width: 14px; height: 40px; right: 10px; top: 260px; }
+.rect.white.bottom-left { bottom: 180px; left: 10px; }
+.rect.green.bottom-right { bottom: 120px; right: 20px; width: 80px; }
+
+.characters {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 5;
+}
+.characters img { width: 100%; opacity: 0.9; }
+
+/* 平板等大螢幕優化 */
+@media (min-width: 768px) {
+  .app {
+    width: 80vw;
+    max-width: 650px;
+    height: 85vh;
+  }
+  .menu button {
+    font-size: 22px;   
+    padding: 22px;
+  }
+}

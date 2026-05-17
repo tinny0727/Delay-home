@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Web Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+</head>
+<body>
+
+  <div class="app">
+    <div id="glitch-container"></div>
+
+    <div id="main-page" class="page active">
+      <div class="header">
+        <h1>Web Game</h1>
+      </div>
+
+      <div class="decor">
+        <span class="square green"></span>
+        <span class="rect white"></span>
+        <span class="square green right"></span>
+        <span class="rect green vertical"></span>
+        <span class="rect white bottom-left"></span>
+        <span class="rect green bottom-right"></span>
+      </div>
+
+      <div class="eyes">
+        <div class="eye"></div>
+        <div class="eye"></div>
+      </div>
+
+      <div class="menu">
+        <button onclick="navigateTo('https://tinny0727.github.io/Delay-text/')">Emotion</button>
+        <button onclick="navigateTo('#')">Energy</button>
+        <button onclick="navigateTo('#')">Focus</button>
+      </div>
+    </div>
+
+    <div class="characters">
+      <img src="https://via.placeholder.com/300x120" alt="characters">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
