@@ -51,7 +51,7 @@ body {
   padding: 20px;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(42, 4, 4, 0);
   display: flex;
   flex-direction: column;
 }
@@ -127,6 +127,34 @@ body {
 }
 
 .menu button:hover {
+  background: rgba(0,255,100,0.2);
+  border-color: #00ff88;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 10px;
+  position: relative;
+  z-index: 10;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.text button {
+  padding: 18px;
+  border-radius: 40px;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  background: #fff;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.text button:hover {
   background: rgba(0,255,100,0.2);
   border-color: #00ff88;
 }
